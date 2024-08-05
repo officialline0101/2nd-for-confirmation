@@ -3,71 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>予約フォーム</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .circle {
+            color: red;
+        }
+        .cross {
+            color: black;
+        }
+        .dash {
+            color: grey;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>予約フォーム</h1>
-        <form>
-            <div class="form-group">
-                <label for="name">お客様名（カタカナ）</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">電話番号</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label>ご来店回数</label>
-                <div class="radio-group">
-                    <input type="radio" id="first-time" name="visit-count" value="初めて" required>
-                    <label for="first-time">初めて</label>
-                    <input type="radio" id="repeat" name="visit-count" value="2回目以降" required>
-                    <label for="repeat">2回目以降</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>症状</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="symptom1" name="symptom" value="頭痛・偏頭痛">
-                    <label for="symptom1">頭痛・偏頭痛</label>
-                    <input type="checkbox" id="symptom2" name="symptom" value="交通事故施術">
-                    <label for="symptom2">交通事故施術</label>
-                    <input type="checkbox" id="symptom3" name="symptom" value="肩こり・腕のしびれ">
-                    <label for="symptom3">肩こり・腕のしびれ</label>
-                    <input type="checkbox" id="symptom4" name="symptom" value="臀部・下肢の痛みや痒れ">
-                    <label for="symptom4">臀部・下肢の痛みや痒れ</label>
-                    <input type="checkbox" id="symptom5" name="symptom" value="ぎっくり腰・慢性腰痛">
-                    <label for="symptom5">ぎっくり腰・慢性腰痛</label>
-                    <input type="checkbox" id="symptom6" name="symptom" value="寝違い・むち打ち等首の症状">
-                    <label for="symptom6">寝違い・むち打ち等首の症状</label>
-                    <input type="checkbox" id="symptom7" name="symptom" value="EMS(電気的筋肉刺激装置)トレーニング">
-                    <label for="symptom7">EMS(電気的筋肉刺激装置)トレーニング</label>
-                    <input type="checkbox" id="symptom8" name="symptom" value="健康保険の施術">
-                    <label for="symptom8">健康保険の施術</label>
-                    <input type="checkbox" id="symptom9" name="symptom" value="その他">
-                    <label for="symptom9">その他</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="date1">第1希望日</label>
-                <input type="datetime-local" id="date1" name="date1" required>
-            </div>
-            <div class="form-group">
-                <label for="date2">第2希望日</label>
-                <input type="datetime-local" id="date2" name="date2" required>
-            </div>
-            <div class="form-group">
-                <label for="date3">第3希望日</label>
-                <input type="datetime-local" id="date3" name="date3" required>
-            </div>
-            <div class="form-group">
-                <label for="message">メッセージ（質問等お気軽にご記入ください）</label>
-                <textarea id="message" name="message"></textarea>
-            </div>
-            <button type="submit">予約を行う</button>
-        </form>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>前の一週間</th>
+                <th colspan="7">2024年8月</th>
+                <th>次の一週間</th>
+            </tr>
+            <tr>
+                <th>時間</th>
+                <th>5 (月)</th>
+                <th>6 (火)</th>
+                <th>7 (水)</th>
+                <th>8 (木)</th>
+                <th>9 (金)</th>
+                <th>10 (土)</th>
+                <th>11 (祝)</th>
+                <th>12 (祝)</th>
+                <th>13 (火)</th>
+                <th>14 (水)</th>
+                <th>15 (木)</th>
+                <th>16 (金)</th>
+                <th>17 (土)</th>
+                <th>18 (日)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10:00</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="cross">×</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="dash">－</td>
+                <td class="circle">○</td>
+            </tr>
+            <tr>
+                <td>10:30</td>
+                <td colspan="2" class="dash">－</td>
+                <td colspan="14" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>11:00</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>11:30</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>12:00</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>12:30</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>13:00</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>13:30</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>14:00</td>
+                <td class="cross">×</td>
+                <td class="circle">○</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td colspan="10" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>14:30</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="circle">○</td>
+                <td colspan="12" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>15:00</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td colspan="13" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>15:30</td>
+                <td class="circle">○</td>
+                <td colspan="14" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>16:00</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>16:30</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>17:00</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>17:30</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td class="cross">×</td>
+                <td colspan="10" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>18:00</td>
+                <td class="circle">○</td>
+                <td colspan="14" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>18:30</td>
+                <td colspan="15" class="circle">○</td>
+            </tr>
+            <tr>
+                <td>19:00</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td colspan="10" class="dash">－</td>
+            </tr>
+            <tr>
+                <td>19:30</td>
+                <td class="circle">○</td>
+                <td class="circle">○</td>
+                <td colspan="13" class="dash">－</td>
+            </tr>
+            <tr>
+                <td>20:00</td>
+                <td class="circle">○</td>
+                <td class="cross">×</td>
+                <td class="circle">○</td>
+                <td colspan="12" class="dash">－</td>
+            </tr>
+            <tr>
+                <td>20:30</td>
+                <td colspan="3" class="cross">×</td>
+                <td colspan="12" class="dash">－</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
