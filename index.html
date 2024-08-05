@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
+    <title>Advanced Calendar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
         th, td {
             border: 1px solid #ccc;
             text-align: center;
             padding: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         th {
             background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        th:nth-child(1),
+        td:nth-child(1) {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            background: #fff;
         }
         .circle {
             color: red;
@@ -29,167 +45,140 @@
         .dash {
             color: grey;
         }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 4px;
+            }
+        }
     </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>前の一週間</th>
-                <th colspan="7">2024年8月</th>
-                <th>次の一週間</th>
-            </tr>
-            <tr>
-                <th>時間</th>
-                <th>5 (月)</th>
-                <th>6 (火)</th>
-                <th>7 (水)</th>
-                <th>8 (木)</th>
-                <th>9 (金)</th>
-                <th>10 (土)</th>
-                <th>11 (祝)</th>
-                <th>12 (祝)</th>
-                <th>13 (火)</th>
-                <th>14 (水)</th>
-                <th>15 (木)</th>
-                <th>16 (金)</th>
-                <th>17 (土)</th>
-                <th>18 (日)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>10:00</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="cross">×</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="dash">－</td>
-                <td class="circle">○</td>
-            </tr>
-            <tr>
-                <td>10:30</td>
-                <td colspan="2" class="dash">－</td>
-                <td colspan="14" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>11:00</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>11:30</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>12:00</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>12:30</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>13:00</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>13:30</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>14:00</td>
-                <td class="cross">×</td>
-                <td class="circle">○</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td colspan="10" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>14:30</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="circle">○</td>
-                <td colspan="12" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>15:00</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td colspan="13" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>15:30</td>
-                <td class="circle">○</td>
-                <td colspan="14" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>16:00</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>16:30</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>17:00</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>17:30</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td class="cross">×</td>
-                <td colspan="10" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>18:00</td>
-                <td class="circle">○</td>
-                <td colspan="14" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>18:30</td>
-                <td colspan="15" class="circle">○</td>
-            </tr>
-            <tr>
-                <td>19:00</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td colspan="10" class="dash">－</td>
-            </tr>
-            <tr>
-                <td>19:30</td>
-                <td class="circle">○</td>
-                <td class="circle">○</td>
-                <td colspan="13" class="dash">－</td>
-            </tr>
-            <tr>
-                <td>20:00</td>
-                <td class="circle">○</td>
-                <td class="cross">×</td>
-                <td class="circle">○</td>
-                <td colspan="12" class="dash">－</td>
-            </tr>
-            <tr>
-                <td>20:30</td>
-                <td colspan="3" class="cross">×</td>
-                <td colspan="12" class="dash">－</td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th><button onclick="prevWeek()">前の一週間</button></th>
+                    <th colspan="7">2024年8月</th>
+                    <th><button onclick="nextWeek()">次の一週間</button></th>
+                </tr>
+                <tr>
+                    <th>時間</th>
+                    <th>5 (月)</th>
+                    <th>6 (火)</th>
+                    <th>7 (水)</th>
+                    <th>8 (木)</th>
+                    <th>9 (金)</th>
+                    <th>10 (土)</th>
+                    <th>11 (祝)</th>
+                    <th>12 (祝)</th>
+                    <th>13 (火)</th>
+                    <th>14 (水)</th>
+                    <th>15 (木)</th>
+                    <th>16 (金)</th>
+                    <th>17 (土)</th>
+                    <th>18 (日)</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Rows will be generated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const schedule = [
+            // Sample data (Replace with actual data)
+            ["10:00", "×", "×", "×", "×", "×", "○", "○", "○", "×", "○", "○", "○", "○", "－", "○"],
+            ["10:30", "－", "－", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["11:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["11:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["12:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["12:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["13:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["13:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["14:00", "×", "○", "×", "×", "×", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["14:30", "×", "×", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["15:00", "×", "×", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["15:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["16:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["16:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["17:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["17:30", "×", "×", "×", "×", "×", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["18:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["18:30", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○"],
+            ["19:00", "○", "○", "○", "○", "○", "○", "○", "○", "○", "○", "－", "－", "－", "－", "－"],
+            ["19:30", "○", "○", "○", "○", "○", "○", "－", "－", "－", "－", "－", "－", "－", "－", "－"],
+            ["20:00", "○", "×", "○", "○", "○", "－", "－", "－", "－", "－", "－", "－", "－", "－", "－"],
+            ["20:30", "×", "×", "×", "×", "×", "－", "－", "－", "－", "－", "－", "－", "－", "－", "－"]
+        ];
+
+        const calendarBody = document.getElementById('calendar-body');
+
+        function createRow(rowData) {
+            const row = document.createElement('tr');
+            rowData.forEach((cellData, index) => {
+                const cell = document.createElement(index === 0 ? 'th' : 'td');
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                const span = document.createElement('span');
+                span.className = cellData === '○' ? 'circle' : cellData === '×' ? 'cross' : 'dash';
+                span.innerText = cellData;
+                tooltip.appendChild(span);
+                const tooltipText = document.createElement('span');
+                tooltipText.className = 'tooltiptext';
+                tooltipText.innerText = `Details for ${cellData}`;
+                tooltip.appendChild(tooltipText);
+                cell.appendChild(tooltip);
+                row.appendChild(cell);
+            });
+            return row;
+        }
+
+        function loadSchedule() {
+            calendarBody.innerHTML = '';
+            schedule.forEach(rowData => {
+                calendarBody.appendChild(createRow(rowData));
+            });
+        }
+
+        function prevWeek() {
+            // Logic for previous week
+            alert('Previous week');
+        }
+
+        function nextWeek() {
+            // Logic for next week
+            alert('Next week');
+        }
+
+        loadSchedule();
+    </script>
 </body>
 </html>
